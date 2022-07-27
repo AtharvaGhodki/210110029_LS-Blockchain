@@ -15,12 +15,13 @@ contract Election{
     Candidate[] candidates;
     uint public voting_end;
     event ElectionResult(string name,uint vote_count);
-    function Election_Committee(string memory _name,uint duration_hours,string memory candidate_name_1,string memory candidate_name_2) public{
+    function Election_Committee(string memory _name,uint duration_hours,string memory candidate_name_1,string memory candidate_name_2,string memory candidate_name_3) public{
         owner=msg.sender;
         name=_name;
         voting_end=block.timestamp+ (duration_hours*1 hours);
         candidates.push(Candidate(candidate_name_1,0));
         candidates.push(Candidate(candidate_name_2,0));
+        candidates.push(Candidate(candidate_name_3,0));
     }
     function Authorization(address voter)public{
         require(msg.sender==owner);
